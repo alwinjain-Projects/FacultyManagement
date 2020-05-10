@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Faculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("_HeaderNavBar");
+
+   
+    <div class="panel-body">
+        <h2>List of faculty we have</h2>
+        <table class="table table-sm table-striped table-bordered" cellspacing="20" cellpadding="20">
+            <thead>
+                <tr>
+                    <th>Faculty Name</th>
+                    <th>Course Name</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (FacultyManagement.Models.CourseAndFaculty r in Model)
+                {
+
+                    <tr>
+                        <td>@r.facultyName</td>
+                        <td>@r.courseName</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

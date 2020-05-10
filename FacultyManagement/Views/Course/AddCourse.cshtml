@@ -1,0 +1,42 @@
+﻿@model FacultyManagement.Models.CourseResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Course</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("_HeaderNavBar");
+
+    <h3>@ViewBag.Coursemsg </h3>
+    <form class="p-a-1" asp-action="AddCourse" method="post">
+        <div asp-validation-summary="All" style="color:red"></div>
+        <div class="boxing">
+
+            <label for="lname">Course ID</label>
+            <input class="cener" type="text" asp-for="cId" placeholder="Course ID..">
+
+
+            <label for="fname">Course Name</label>
+            <input class="cener" type="text" asp-for="cName" placeholder="Your Course name..">
+
+            <label for="lname">Course Credit</label>
+            <input class="cener" type="text" asp-for="cCredit" placeholder="Your Course Credit..">
+
+
+
+            <input class="gtr" type="submit" value="Save">
+            <input class="gtr2" type="submit" value="Cancel" asp-action="Home" asp-controller="Home">
+    </form>
+    </div>
+
+</body>
+</html>

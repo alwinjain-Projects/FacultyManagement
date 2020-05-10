@@ -1,0 +1,62 @@
+﻿@using FacultyManagement.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>View Faculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+
+        IEnumerable<FeedbackResponse> feed = ViewData["FeedbackData"] as IEnumerable<FeedbackResponse>;
+        
+    }
+
+    @Html.Partial("_HeaderNavBar");
+
+    <div class="panel-body">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <label for="country">Sort By</label>&nbsp;
+                        <a asp-action="FilterFeedback" asp-route-rating="Very Bad">Very Bad</a>  &nbsp; &nbsp;
+                        <a asp-action="FilterFeedback" asp-route-rating="Bad">Bad</a>  &nbsp; &nbsp;
+                        <a asp-action="FilterFeedback" asp-route-rating="Good">Good</a>  &nbsp; &nbsp;
+                        <a asp-action="FilterFeedback" asp-route-rating="Very Good">Very Good</a>  &nbsp; &nbsp;
+                        <a asp-action="FilterFeedback" asp-route-rating="Excellent">Excellent</a>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+                    
+        <table class="table table-sm table-striped table-bordered" cellspacing="20" cellpadding="20">
+
+            @foreach (FeedbackResponse r in feed)
+            {
+                <tbody style="border: 12px solid #ddd;">
+
+                    <tr>
+                        <td style="color:#E44032; font-size:larger; font-style:oblique;" colspan="2">@r.cOrF : @r.cOrFName</td>
+                    </tr>
+                    <tr>
+                        <td> Name: @r.fName <br /> @r.Message</td>
+                        <td>@r.feedback</td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

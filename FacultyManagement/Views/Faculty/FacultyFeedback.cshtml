@@ -1,0 +1,100 @@
+﻿@model FacultyManagement.Models.FeedbackResponse;
+@using FacultyManagement.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddFaculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+    <link href="~/CSS/feedbackstyle.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+
+        IEnumerable<FacultyResponse> faculty = ViewData["Faculty"] as IEnumerable<FacultyResponse>;
+        IEnumerable<CourseResponse> course = ViewData["Course"] as IEnumerable<CourseResponse>;
+    }
+    @Html.Partial("_HeaderNavBar")
+
+    <div class="boxing">
+        <!-- title -->
+        <h1 class="header-w3ls">Give Your FeedBack</h1>
+        <!-- //title -->
+        <!-- content -->
+        <div class="porduct-order-agile">
+            <form asp-action="FacultyFeedback" method="post">
+                <input type="text" asp-for="cOrF" value="Faculty" contenteditable="false" hidden="hidden" >
+                
+                <div class="main">
+
+
+                    <div class="form-group-w3l">
+                        <label for="country">Select Faculty</label>
+
+                        <select class="sgtr" asp-for="cOrFName">
+                            <option value="">Select</option>
+                            @foreach (FacultyResponse f in faculty)
+                            {
+                                <option value=@f.fName>@f.fId - @f.fName</option>
+
+                            }
+                        </select><br /><br />
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="form-group-w3l">
+                        <p>Name</p>
+                        <input type="text" placeholder="" required="" asp-for="fName">
+
+                    </div>
+                    <div class="form-group-w3l">
+                        <p>Last Name</p>
+                        <input type="text" placeholder="" required="" asp-for="lName">
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="form-group-w3l">
+                        <p>Phone</p>
+                        <input type="text" placeholder="" required="" asp-for="phone">
+                    </div>
+                    <div class="form-group-w3l">
+                        <p>Email</p>
+                        <input type="Email" placeholder="" required="" asp-for="gmail">
+                    </div>
+                </div>
+                <div class="sub-hedder">
+                    <h2> Please rate Faculty</h2>
+                  
+                    <div class="main">
+                        <div class="form-group-w3l">
+                            <label for="country">Select rating</label>
+
+                            <select class="sgtr" asp-for="feedback">
+                                <option value="">Select</option>
+                                <option value="Very Bad"> Very Bad</option>
+                                <option value="Bad"> Bad</option>
+                                <option value="Very Good">Very Good</option>
+                                <option value="Good">Good</option>
+                                <option value="Excellent">Excellent</option>
+
+                            </select><br /><br />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-control-w3l">
+                    <p>Any Message...</p>
+                    <textarea name="Message" placeholder="" asp-for="Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+</body>
+</html>

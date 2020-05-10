@@ -1,0 +1,38 @@
+﻿@model FacultyManagement.Models.FacultyResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddFaculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("_HeaderNavBar");
+
+    <h3>@ViewBag.Facultymsg </h3>
+    <div class="boxing">
+        <form class="p-a-1" asp-action="AddFaculty" method="post">
+            <div asp-validation-summary=" All" style="color:red"></div>
+
+        
+
+            <label for="fname">First Name</label>
+            <input class="cener" type="text" asp-for="fName" placeholder="Your first name..">
+
+            <label for="lname">Last Name</label>
+            <input class="cener" type="text" asp-for="fLastName" placeholder="Your last name..">
+
+            <input class="gtr" type="submit" value="Save">
+            <input class="gtr2" type="submit" value="Cancel" asp-action="Home" asp-controller="Home">
+
+        </form>
+    </div>
+</body>
+</html>

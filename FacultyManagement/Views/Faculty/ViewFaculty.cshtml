@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Faculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("_HeaderNavBar");
+
+    <div class="panel-body">
+        <h2>List of faculty we have</h2>
+        <table class="table table-sm table-striped table-bordered" cellspacing="20" cellpadding="20">
+            <thead>
+                <tr>
+                    <th>Faculty Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Edit / Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (FacultyManagement.Models.FacultyResponse r in Model)
+                {
+
+                <tr>
+                    <td>@r.fId</td>
+                    <td>@r.fName</td>
+                    <td>@r.fLastName</td>
+                    <td class="text-center">
+
+
+
+                        <a asp-action="EditFaculty" class="btn btn-sm btn-warning" asp-route-fid="@r.fId">
+                            Edit
+                        </a>
+
+                        <a asp-action="DeleteFaculty" class="btn btn-sm btn-danger" asp-route-fid="@r.fId">
+                            Delete
+                        </a>
+
+                       
+
+
+</tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@model FacultyManagement.Models.CourseAndFaculty
+@using FacultyManagement.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddFaculty</title>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/CSS/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+
+        IEnumerable<FacultyResponse> faculty = ViewData["Faculty"] as IEnumerable<FacultyResponse>;
+        IEnumerable<CourseResponse> course = ViewData["Course"] as IEnumerable<CourseResponse>;
+    }
+    @Html.Partial("_HeaderNavBar");
+    <h3>Enter Details of Courses </h3>
+
+    <div class="boxing">
+        <form class="p-a-1" asp-action="AssignFaculty" method="post">
+            <label for="country">Select Faculty</label>
+
+            <select class="sgtr" asp-for="facultyName">
+                <option value="">Select</option>
+                @foreach (FacultyResponse f in faculty)
+                {
+                <option value=@f.fName>@f.fId - @f.fName</option>
+
+                }
+            </select><br /><br />
+
+            <label for="country">Select Course</label>
+           
+            <select class="sgtr" asp-for="courseName">
+                <option value="">Select</option>
+
+                @foreach (CourseResponse c in course)
+                {
+                    <option value=@c.cName>@c.cName</option>
+
+                }
+            </select><br /><br />
+
+
+            <input class="gtr" type="submit" value="Save">
+            <input class="gtr2" type="submit" value="Cancel" asp-action="Home" asp-controller="Home">
+
+        </form>
+    </div>
+</body>
+</html>
